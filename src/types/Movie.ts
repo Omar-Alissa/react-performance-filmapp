@@ -4,13 +4,13 @@ export interface Movie {
   overview: string 
   poster_path: string 
   vote_average: number 
-  release_data: string
+  release_date: string
   genre_ids:number[]
 }
 
 export interface MoviesResponse {
   results: Movie[]
-  total_page: number
+  total_pages: number
   total_results: number 
   page: number
 }
