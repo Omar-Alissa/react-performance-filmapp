@@ -1,10 +1,10 @@
 
+import PopularMoviesPage from './pages/PopularMoviesPage'
 
 function App() {
-
-  return (
+  return(
     <>
-      
+      <PopularMoviesPage />
     </>
   )
 }
