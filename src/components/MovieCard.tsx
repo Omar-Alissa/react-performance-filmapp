@@ -1,4 +1,5 @@
 import type { Movie } from '../types/Movie'
+import { Link } from 'react-router-dom'
 import './MovieCard.css'
 
 type MovieCardProps = {
@@ -7,7 +8,6 @@ type MovieCardProps = {
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'
 const FALLBACK_POSTER_URL = 'https://via.placeholder.com/500x750?text=No+Image'
-const FALLBACK_OVERVIEW = 'No overview available.'
 
 const MovieCard = ({ movie }: MovieCardProps) => {
   const releaseYear = movie.release_date
@@ -19,22 +19,23 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     : FALLBACK_POSTER_URL
 
   return (
-    <article className="movie-card">
-      <img
-        src={posterUrl}
-        alt={`Poster for ${movie.title}`}
-        loading="lazy"
-        className="movie-poster"
-      />
+    <Link to={`/movie/${movie.id}`} className="movie-card-link" aria-label={`Open details for ${movie.title}`}>
+      <article className="movie-card movie-card--clickable">
+        <img
+          src={posterUrl}
+          alt={`Poster for ${movie.title}`}
+          loading="lazy"
+          className="movie-poster"
+        />
 
-      <div className="movie-body">
-        <h2 className="movie-title">{movie.title}</h2>
-        <p className="movie-meta">
-          {releaseYear} | Rating: {movie.vote_average.toFixed(1)}
-        </p>
-        <p className="movie-overview">{movie.overview || FALLBACK_OVERVIEW}</p>
-      </div>
-    </article>
+        <div className="movie-body">
+          <h2 className="movie-title">{movie.title}</h2>
+          <p className="movie-meta">
+            {releaseYear} | Rating: {movie.vote_average.toFixed(1)}
+          </p>
+        </div>
+      </article>
+    </Link>
   )
 }
 
