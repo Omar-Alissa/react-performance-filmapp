@@ -1,0 +1,20 @@
+.movie-details-page {
+  padding: 24px;
+  display: grid;
+  gap: 24px;
+}
+
+.back-button {
+  justify-self: start;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
