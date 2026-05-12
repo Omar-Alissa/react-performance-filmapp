@@ -1,0 +1,39 @@
+.movie-details {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.movie-details__poster {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.movie-details__body {
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+
+.movie-details__title {
+  margin: 0;
+}
+
+.movie-details__tagline {
+  font-style: italic;
+}
+
+.movie-details__meta,
+.movie-details__genres,
+.movie-details__overview,
+.movie-details__tagline {
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .movie-details {
+    grid-template-columns: 1fr;
+  }
+}
