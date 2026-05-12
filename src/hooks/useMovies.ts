@@ -15,7 +15,7 @@ const useMovies = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetchPopularMovies(controller.signal);
+        const response = await fetchPopularMovies(1, controller.signal);
         setMovies(response.results);
       } catch (err: any) {
         if (err.name === 'AbortError') {
