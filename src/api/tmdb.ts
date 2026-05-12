@@ -17,11 +17,11 @@ const fetcher = async <T>(endpoint: string, options?: RequestInit): Promise<T> =
   return response.json()
 }
 
-export const fetchPopularMovies = (signal?: AbortSignal) =>
-  fetcher<MoviesResponse>("/movie/popular", { signal })
+export const fetchPopularMovies = (page = 1, signal?: AbortSignal) =>
+  fetcher<MoviesResponse>(`/movie/popular?page=${page}`, { signal })
 
 export const fetchMovieDetail = (id: string, signal?: AbortSignal) =>
   fetcher<MovieDetail>(`/movie/${id}`, { signal })
 
-export const searchMovies = (query: string, signal?: AbortSignal) =>
-  fetcher<MoviesResponse>(`/search/movie?query=${encodeURIComponent(query)}`, { signal })
+export const searchMovies = (query: string, page = 1, signal?: AbortSignal) =>
+  fetcher<MoviesResponse>(`/search/movie?query=${encodeURIComponent(query)}&page=${page}`, { signal })
