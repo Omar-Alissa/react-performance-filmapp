@@ -3,10 +3,12 @@ import type { MoviesResponse, MovieDetail } from "../types/Movie.ts"
 const BASE_URL = "https://api.themoviedb.org/3"
 const API_KEY = import.meta.env.VITE_API_Read_Access_Token
 
-const fetcher = async <T>(endpoint: string): Promise<T> => {
+const fetcher = async <T>(endpoint: string, options?: RequestInit): Promise<T> => {
   const response = await fetch(`${BASE_URL}${endpoint}`, {
+    ...options,
     headers: {
-      Authorization: `Bearer ${API_KEY}`
+      Authorization: `Bearer ${API_KEY}`,
+      ...options?.headers,
     }
   })
   if (!response.ok) {
@@ -15,11 +17,11 @@ const fetcher = async <T>(endpoint: string): Promise<T> => {
   return response.json()
 }
 
-export const fetchPopularMovies = () =>
-  fetcher<MoviesResponse>("/movie/popular")
+export const fetchPopularMovies = (signal?: AbortSignal) =>
+  fetcher<MoviesResponse>("/movie/popular", { signal })
 
-export const fetchMovieDetail = (id: string) =>
-  fetcher<MovieDetail>(`/movie/${id}`)
+export const fetchMovieDetail = (id: string, signal?: AbortSignal) =>
+  fetcher<MovieDetail>(`/movie/${id}`, { signal })
 
-export const searchMovies = (query: string) =>
-  fetcher<MoviesResponse>(`/search/movie?query=${query}`)
+export const searchMovies = (query: string, signal?: AbortSignal) =>
+  fetcher<MoviesResponse>(`/search/movie?query=${encodeURIComponent(query)}`, { signal })
