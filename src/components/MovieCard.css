@@ -1,0 +1,30 @@
+.movie-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.movie-poster {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.movie-body {
+  padding: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.movie-title {
+  margin: 0;
+}
+
+.movie-meta,
+.movie-overview {
+  color: var(--text);
+}
