@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import MovieCard from '../components/MovieCard'
 import useFilteredMovies from '../hooks/useFilteredMovies'
+import introImage from '../assets/intro_image.png'
 import './PopularMoviesPage.css'
 
 const PopularMoviesPage = () => {
@@ -9,6 +10,8 @@ const PopularMoviesPage = () => {
 
   return (
     <main className="movies-page">
+      <img src={introImage} alt="Movie intro" className="movies-page__intro-image" />
+
       <div className="movies-page__header">
         <div>
           <h1>Popular Movies</h1>
