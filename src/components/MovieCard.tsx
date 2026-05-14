@@ -26,6 +26,7 @@ const MovieCard = memo(({ movie }: MovieCardProps) => {
           src={posterUrl}
           alt={`Poster for ${movie.title}`}
           className="movie-poster"
+          loading="lazy"
         />
         <div className="movie-body">
           <h2 className="movie-title">{movie.title}</h2>
