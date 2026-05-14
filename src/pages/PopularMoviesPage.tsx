@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import MovieCard from '../components/MovieCard'
 import useFilteredMovies from '../hooks/useFilteredMovies'
-import introImage from '../assets/intro_image.png'
+import introImage from '../assets/intro_image_optimized.jpg'
 import './PopularMoviesPage.css'
 
 const PopularMoviesPage = () => {
