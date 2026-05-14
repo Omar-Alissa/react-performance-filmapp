@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import type { Movie } from '../types/Movie'
 import { Link } from 'react-router-dom'
 import './MovieCard.css'
@@ -9,14 +10,10 @@ type MovieCardProps = {
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'
 const FALLBACK_POSTER_URL = 'https://via.placeholder.com/500x750?text=No+Image'
 
-const MovieCard = ({ movie }: MovieCardProps) => {
+const MovieCard = memo(({ movie }: MovieCardProps) => {
   const releaseYear = movie.release_date
     ? new Date(movie.release_date).getFullYear()
     : 'Unknown'
-
-  // Simulate expensive JS calculation (bad practice)
-  const expensiveCalc = Array.from({ length: 10000 }, (_, i) => i * Math.random()).reduce((a, b) => a + b, 0)
-  const fakeData = `${expensiveCalc.toFixed(0)}`
 
   const posterUrl = movie.poster_path
     ? `${IMAGE_BASE_URL}${movie.poster_path}`
@@ -30,8 +27,6 @@ const MovieCard = ({ movie }: MovieCardProps) => {
           alt={`Poster for ${movie.title}`}
           className="movie-poster"
         />
-        <span style={{ display: 'none' }}>{fakeData}</span>
-
         <div className="movie-body">
           <h2 className="movie-title">{movie.title}</h2>
           <p className="movie-meta">
@@ -41,6 +36,6 @@ const MovieCard = ({ movie }: MovieCardProps) => {
       </article>
     </Link>
   )
-}
+})
 
 export default MovieCard
